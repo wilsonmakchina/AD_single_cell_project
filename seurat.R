@@ -60,8 +60,6 @@ dev.off()
 
 
 
-
-
 MG@ident <- as.factor(cell_type1$type)
 names(MG@ident) <- rownames(cell_type1)
 
