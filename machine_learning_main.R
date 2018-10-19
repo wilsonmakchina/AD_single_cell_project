@@ -1,13 +1,13 @@
-path <- '/share/home/duanshumin/wilsonmak/analysis/AD_microglia/GSE103334/'
+path <- '/share/home/duanshumin/wilsonmak/analysis/AD_microglia/GSE98969/'
 
 pkgs <- list("dplyr","DMwR","caret", "glmnet", "doParallel", "foreach", "pROC", "stabs","parallel")
 lapply(pkgs, require, character.only = T)
 registerDoParallel(cores = 20)
 
-#load data into variable called mydata
-rowData <- read.csv(paste0(path,'normalized_data.csv'),header=T, row.name=1)
 
-mydata <- t(rowData)
+normalized_data <- readRDS(paste0(path, 'MG.rds'))
+
+mydata <- t(normalized_data)
 
 metadata <- read.table(paste0(path,'metadata_remove_outlines.txt'), head=F, row.name=2, stringsAsFactors=FALSE)
 
