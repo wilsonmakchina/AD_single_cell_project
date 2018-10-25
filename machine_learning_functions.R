@@ -67,31 +67,31 @@ a_prameter <- function (a, x, y, q, type = c("conservative", "anticonservative")
 glmnet.enet_0.8 <- function (x, y, q, type = c("conservative", "anticonservative"), ...) {
     #
     a = 0.8
-    a_prameter(a=a,x=x,y=y,q=q,type=type)    
+    return(a_prameter(a=a,x=x,y=y,q=q,type=type))    
 }
 
 glmnet.enet_0.6 <- function (x, y, q, type = c("conservative", "anticonservative"), ...) {
     #
     a = 0.6
-    a_prameter(a=a,x=x,y=y,q=q,type=type)    
+    return(a_prameter(a=a,x=x,y=y,q=q,type=type))   
 }
 
 glmnet.enet_0.4 <- function (x, y, q, type = c("conservative", "anticonservative"), ...) {
     #
     a = 0.4
-    a_prameter(a=a,x=x,y=y,q=q,type=type)    
+    return(a_prameter(a=a,x=x,y=y,q=q,type=type))   
 }
 
 glmnet.enet_0.2 <- function (x, y, q, type = c("conservative", "anticonservative"), ...) {
     #
     a = 0.2
-    a_prameter(a=a,x=x,y=y,q=q,type=type)    
+    return(a_prameter(a=a,x=x,y=y,q=q,type=type))     
 
 }
 glmnet.enet_0 <- function (x, y, q, type = c("conservative", "anticonservative"), ...) {
     #
     a = 0
-    a_prameter(a=a,x=x,y=y,q=q,type=type)    
+    return(a_prameter(a=a,x=x,y=y,q=q,type=type))    
 
 }
 
