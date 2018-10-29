@@ -57,16 +57,16 @@ MG <- NormalizeData(object = MG, normalization.method = "LogNormalize",
                       scale.factor = 10000)
 
 
-MG <- ScaleData(object = MG, do.scale = F, do.center = F, vars.to.regress = c("nUMI", "percent.mito", "percent.ERCC"))
+MG <- ScaleData(object = MG, do.scale = T, do.center = T, vars.to.regress = c("nUMI", "percent.mito", "percent.ERCC"))
 
-
-MG <- FindVariableGenes(object = MG, mean.function = ExpMean, dispersion.function = LogVMR)
+# MG <- ScaleData(object = MG)
+MG <- FindVariableGenes(object = MG, mean.function = ExpMean, dispersion.function = LogVMR,x.low.cutoff = 0.0125, x.high.cutoff = 3, y.cutoff = 0.5)
 length(x = MG@var.genes)
 MG <- RunPCA(object = MG, pc.genes = MG@var.genes, do.print = TRUE, pcs.print = 1:5, 
     genes.print = 5)
 
 
-PCElbowPlot(object = MG)
+# PCElbowPlot(object = MG)
 
 
 MG <- RunTSNE(object = MG, dims.use = 1:15, do.fast = T, perplexity=30)
@@ -76,10 +76,13 @@ MG <- RunTSNE(object = MG, dims.use = 1:15, do.fast = T, perplexity=30)
 
 p <- TSNEPlot(object = MG, group.by = "strain", do.return = TRUE, pt.size = 1)
 
+strain <- read.csv(paste0(path,'strain_information.csv'),stringsAsFactors = F, head = 1, row.names=1)
+
+MG <- AddMetaData(object = MG, metadata = strain, col.name = "strain")
 
 
 pdf(paste0('tsne_cell_type.pdf'), width = 5, height = 3)
-TSNEPlot(object = MG,  do.return = TRUE, pt.size = 0.1)
+TSNEPlot(object = MG,  group.by='Mouse_ID',do.return = TRUE, pt.size = 0.1)
 dev.off()
 
 
