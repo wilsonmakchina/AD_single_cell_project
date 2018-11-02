@@ -60,7 +60,7 @@ MG <- NormalizeData(object = MG, normalization.method = "LogNormalize",
 MG <- ScaleData(object = MG, do.scale = T, do.center = T, vars.to.regress = c("nUMI", "percent.mito", "percent.ERCC"))
 
 # MG <- ScaleData(object = MG)
-MG <- FindVariableGenes(object = MG, mean.function = ExpMean, dispersion.function = LogVMR,x.low.cutoff = 0.0125, x.high.cutoff = 3, y.cutoff = 0.5)
+MG <- FindVariableGenes(object = MG, mean.function = ExpMean, dispersion.function = LogVMR)
 length(x = MG@var.genes)
 MG <- RunPCA(object = MG, pc.genes = MG@var.genes, do.print = TRUE, pcs.print = 1:5, 
     genes.print = 5)
