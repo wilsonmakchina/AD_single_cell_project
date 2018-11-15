@@ -1,8 +1,7 @@
 path <- '/share/home/duanshumin/wilsonmak/analysis/AD_microglia/GSE98969/'
 
 pkgs <- list("dplyr","DMwR","caret", "glmnet", "doParallel", "foreach", "pROC", "stabs","parallel","tidyr")
-# source(paste0(path,'machine_learning_functions.R'))
-source('~/wilsonmak/analysis/AD_microglia/GSE103334/machine_learning/20180622/machine_learning_functions.R')
+source('/share/home/duanshumin/wilsonmak/analysis/AD_microglia/machine_learning_functions.R')
 lapply(pkgs, require, character.only = T)
 # registerDoParallel(cores = 20)
 
